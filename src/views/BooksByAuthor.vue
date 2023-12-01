@@ -15,11 +15,11 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-md-8">
-                <div class="row">
-                    <div class="col-12 col-md-4 mb-2" v-for="book in filteredBooks">
-                        <BookCard :book="book"/>
-                    </div>
+        </div>
+        <div class="col-12 col-md-8">
+            <div class="row">
+                <div class="col-12 col-md-4 mb-2" v-for="book in filteredBooks">
+                    <BookCard :book="book" />
                 </div>
             </div>
         </div>
@@ -38,6 +38,8 @@ const filteredBooks = ref([]);
 bookservice.getAllAuthor()
     .then(resp => {
         authors.value = resp;
+        selectedAuthor.value = authors.value[0];
+        onSearchByAuthor();
     });
 
 function onSearchByAuthor() {
